@@ -25,17 +25,17 @@ Instrucciones paso a paso para instalar y ejecutar el proyecto utilizando Docker
 
 Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado public. 
 Para la creacion de las tablas en raiz del proyecto hay una carpeta llamada sql y en archivo dentro hay un script para crear las tablas manualmente y algunos datos de prueba.
-
+```bash
 npm install
 
 docker-compose up --build
-
+```
 Instrucciones paso a paso para instalar y ejecutar sin Docker:
-
+```bash
 npm install
 
 npm run start
-
+```
 Luego queda habilitado en **http://localhost:3000/**
 
 ## Documentacion API 
