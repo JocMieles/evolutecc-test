@@ -5,10 +5,11 @@ Este proyecto es un backend para plataformas que permite crear usuarios, videos 
 ## Configuración Inicial
 
 Instrucciones sobre cómo clonar y configurar el proyecto para ejecutarlo localmente:
-
+```bash
 git clone https://github.com/JocMieles/evolutecc-test.git
 
 cd evolutecc-test
+```
 
 ## Requisitos
 
