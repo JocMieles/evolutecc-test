@@ -1,40 +1,45 @@
-// import { ApiProperty } from '@nestjs/swagger';
-// import { IsNotEmpty, IsString, IsUrl, IsInt } from 'class-validator';
-
-// export class CreateVideoDto {
-//   @ApiProperty({ example: 'Mi Primer Video', description: 'Título del video' })
-//   @IsNotEmpty()
-//   @IsString()
-//   title: string;
-
-//   @ApiProperty({ example: 'Este es un video sobre cómo empezar con NestJS.', description: 'Descripción del video' })
-//   @IsNotEmpty()
-//   @IsString()
-//   description: string;
-
-//   @ApiProperty({ example: 'http://ejemplo.com/video.mp4', description: 'URL del video' })
-//   @IsNotEmpty()
-//   @IsUrl()
-//   url: string;
-
-//   @ApiProperty({ example: 2, description: 'ID del usuario que crea el video' })
-//   @IsNotEmpty()
-//   @IsInt()
-//   userId: number;
-// }
-
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsNumber, IsString, IsUrl, Min } from 'class-validator';
 
 export class CreateVideoDto {
-  @ApiProperty({ example: 'Introduction to NestJS', description: 'Title of the video.' })
-  title: string;
+    @ApiProperty({ 
+        example: 'Introducción a NestJS', 
+        description: 'Título del video. Debe ser una cadena no vacía.' 
+    })
+    @IsNotEmpty({ message: 'El título del video no puede estar vacío.' })
+    @IsString({ message: 'El título debe ser una cadena de caracteres.' })
+    title: string;
 
-  @ApiProperty({ example: 'This video explains how to get started with NestJS.', description: 'A brief description of the video.' })
-  description: string;
+    @ApiProperty({ 
+        example: 'Este video explica cómo empezar con NestJS.', 
+        description: 'Una breve descripción del video. Debe ser informativa y clara.' 
+    })
+    @IsNotEmpty({ message: 'La descripción del video no puede estar vacía.' })
+    @IsString({ message: 'La descripción debe ser una cadena de caracteres.' })
+    description: string;
 
-  @ApiProperty({ example: 'https://example.com/video.mp4', description: 'URL where the video is hosted.' })
-  url: string;
+    @ApiProperty({ 
+        example: 'https://ejemplo.com/video.mp4', 
+        description: 'URL donde se aloja el video. Debe ser una URL válida.' 
+    })
+    @IsNotEmpty({ message: 'La URL del video no puede estar vacía.' })
+    @IsUrl({}, { message: 'La URL proporcionada no es válida.' })
+    url: string;
 
-  @ApiProperty({ example: 1, description: 'User ID of the video uploader.' })
-  userId: number;
+    @ApiProperty({ 
+        example: 1, 
+        description: 'ID del usuario que sube el video. Debe ser un número entero y válido.' 
+    })
+    @IsNotEmpty({ message: 'El ID del usuario es obligatorio.' })
+    @IsNumber({}, { message: 'El ID del usuario debe ser un número.' })
+    @Min(1, { message: 'El ID del usuario debe ser un número positivo.' })
+    userId: number;
+
+    // @ApiProperty({ 
+    //     example: 1, 
+    //     description: 'ID del usuario que sube el video. Debe ser un número entero y válido.' 
+    // })
+    // @IsNotEmpty({ message: 'El ID del usuario es obligatorio.' })
+    // @IsString({ message: 'La descripción debe ser una cadena de caracteres.' })
+    // username: string;
 }

@@ -11,11 +11,9 @@ async function bootstrap() {
     .setTitle('Ejemplo de API')
     .setDescription('La descripción de la API')
     .setVersion('1.0')
-    // Si tienes un esquema de autenticación, también puedes configurarlo aquí.
-    // .addTag('tags')
     .build();
     const document = SwaggerModule.createDocument(app, config, {
-      extraModels: [Comment, User, Video], // Registra aquí tus entidades o DTOs
+      extraModels: [Comment, User, Video],
     });
   SwaggerModule.setup('api', app, document);
   await app.listen(3000);

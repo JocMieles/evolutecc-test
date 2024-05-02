@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { User } from '../entities/user.entity';
@@ -12,7 +12,17 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const existingEmail = await this.usersRepository.findOne({ where: { email: createUserDto.email } });
+    const existingUsername = await this.usersRepository.findOne({ where: { username: createUserDto.username } });
+
+    if (existingEmail) {
+      throw new BadRequestException('El correo electrónico ya está en uso.');
+    }
+    if (existingUsername) {
+      throw new BadRequestException('El nombre de usuario ya está en uso.');
+    }
+
     const user = this.usersRepository.create(createUserDto);
     return this.usersRepository.save(user);
   }
@@ -21,8 +31,12 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User> {
-    return this.usersRepository.findOneOrFail({ where: { id } });
+  async findOne(id: number): Promise<User> {
+    const user = await this.usersRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new NotFoundException(`Usuario con ID ${id} no encontrado.`);
+    }
+    return user;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
@@ -30,13 +44,33 @@ export class UsersService {
       id: id,
       ...updateUserDto,
     });
+
     if (!user) {
-      throw new Error('User not found');
+      throw new NotFoundException(`Usuario con ID ${id} no encontrado.`);
     }
+
+    // Verificar actualizaciones para email y username
+    if (updateUserDto.email && updateUserDto.email !== user.email) {
+      const emailExists = await this.usersRepository.findOne({ where: { email: updateUserDto.email } });
+      if (emailExists) {
+        throw new BadRequestException('El correo electrónico ya está en uso.');
+      }
+    }
+
+    if (updateUserDto.username && updateUserDto.username !== user.username) {
+      const usernameExists = await this.usersRepository.findOne({ where: { username: updateUserDto.username } });
+      if (usernameExists) {
+        throw new BadRequestException('El nombre de usuario ya está en uso.');
+      }
+    }
+
     return this.usersRepository.save(user);
   }
 
   async remove(id: number): Promise<void> {
-    await this.usersRepository.delete(id);
+    const result = await this.usersRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Usuario con ID ${id} no encontrado.`);
+    }
   }
 }

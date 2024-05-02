@@ -1,4 +1,3 @@
-// src/videos/videos.controller.ts
 import { Controller, Get, Post, Body, Param, Delete, Put, HttpStatus } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { CreateVideoDto } from '../dto/create-video.dto';
@@ -53,17 +52,17 @@ export class VideosController {
     return this.videosService.findOne(+id);
   }
 
-  @Put(':id')
-  @ApiOperation({ summary: 'Actualizar un video' })
-  @ApiBody({ type: UpdateVideoDto })
-  @ApiResponse({
-    status: 200,
-    description: 'Video actualizado exitosamente.',
-    type: Video
-  })
-  update(@Param('id') id: string, @Body() updateVideoDto: UpdateVideoDto) {
-    return this.videosService.update(+id, updateVideoDto);
-  }
+  // @Put(':id')
+  // @ApiOperation({ summary: 'Actualizar un video' })
+  // @ApiBody({ type: UpdateVideoDto })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'Video actualizado exitosamente.',
+  //   type: Video
+  // })
+  // update(@Param('id') id: string, @Body() updateVideoDto: UpdateVideoDto) {
+  //   return this.videosService.update(+id, updateVideoDto);
+  // }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Eliminar un video' })

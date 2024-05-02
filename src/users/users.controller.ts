@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags, ApiParam, ApiConsumes } from '@nestjs/swagger';
+import { User } from 'src/entities/user.entity';
 
 @ApiTags('users')
 @Controller('users')
@@ -38,7 +39,7 @@ export class UsersController {
     @ApiResponse({
         status: HttpStatus.OK,
         description: 'Lista de usuarios obtenida exitosamente.',
-        // Aquí deberías definir el tipo de esquema de respuesta si es diferente al DTO de creación
+        type: [User],
     })
     findAll() {
         return this.usersService.findAll();
@@ -50,7 +51,7 @@ export class UsersController {
     @ApiResponse({
         status: HttpStatus.OK,
         description: 'Usuario encontrado.',
-        // Aquí deberías definir el tipo de esquema de respuesta si es diferente al DTO de creación
+        type: User
     })
     @ApiResponse({
         status: HttpStatus.NOT_FOUND,
@@ -68,6 +69,7 @@ export class UsersController {
     @ApiResponse({
         status: HttpStatus.OK,
         description: 'Usuario actualizado exitosamente.',
+        type: User
     })
     @ApiResponse({
         status: HttpStatus.NOT_FOUND,

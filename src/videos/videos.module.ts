@@ -8,7 +8,7 @@ import { Comment } from 'src/entities/comment.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Video, User, Comment]), // Asegúrate de incluir Comment aquí si es necesario
+    TypeOrmModule.forFeature([Video, User, Comment]),
   ],
   controllers: [VideosController],
   providers: [VideosService]
