@@ -6,7 +6,7 @@ Backend que permite crear usuarios, videos, comentarlos y ademas comentar los co
 
 Instrucciones sobre cómo clonar y configurar el proyecto para ejecutarlo localmente:
 ```bash
-git clone https://github.com/JocMieles/evolutecc-test.git
+git clone **https://github.com/JocMieles/evolutecc-test.git**
 
 cd evolutecc-test
 ```
@@ -31,31 +31,27 @@ docker-compose up --build
 - Instrucciones paso a paso para instalar y ejecutar sin Docker:
 
 Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado public. 
-Para la creacion de las tablas en raiz del proyecto hay una carpeta llamada sql y en archivo dentro hay un script para crear las tablas manualmente y algunos datos de prueba.
+Para la creacion de las tablas en la raiz del proyecto hay una carpeta llamada sql, dentro de la carpeta hay un archivo **sql** en el cual encontraras un script para crear las tablas manualmente y algunos datos de prueba.
 
 ```bash
 npm install
 
 npm run start
 ```
-Luego queda habilitado en **http://localhost:3000/**
+Luego la **API** queda habilitada en **http://localhost:3000/**
 
 ## Documentacion API 
 
-Swagger **http://localhost:3000/api**
-Aqui estan explicados los endpoint y los esquemas o las estructuras json que se deben usar para crear, actualizar, obtener y eliminar la información de la base de datos.
+Swagger **http://localhost:3000/api**.
+Aqui estan explicados los endpoint, esquemas y las estructuras json que se deben usar para crear, actualizar, obtener y eliminar la información de la base de datos.
 
 ## Estructura de la Base de Datos
-
-Descripción de cómo se estructura la base de datos y qué representa cada tabla.
 
 ### Diagrama Entidad-Relación
 
 ![Diagrama Entidad-Relación](Diagrama%20Entidad-Relacion.png)
 
 ### Descripción del Diagrama
-
-Descripción breve de cada tabla y sus relaciones:
 
 #### User
 - `id`: Clave primaria, identificador único para cada usuario.
@@ -92,7 +88,7 @@ A continuación se presenta una tabla con los endpoints disponibles en la aplica
 | GET    | `/videos`               | Obtiene una lista de todos los videos.   |
 | POST   | `/videos`               | Crea un nuevo video.                     |
 | GET    | `/videos/:id`           | Obtiene un video por su ID.              |
-| PUT    | `/videos/:id`           | Actualiza un video por su ID.            |
+| PUT    | `/videos/:id`           | Actualiza un video por su ID. Inhabilitado          |
 | DELETE | `/videos/:id`           | Elimina un video por su ID.              |
 | GET    | `/comments`             | Obtiene una lista de todos los comentarios. |
 | POST   | `/comments`             | Crea un nuevo comentario.               |
@@ -103,7 +99,7 @@ A continuación se presenta una tabla con los endpoints disponibles en la aplica
 
 ## Vista Comentarios por Video
 
-Como podemos notar los comentarios salen en orden de jerarquia.
+En el **JSON** que se muestra a continuación, cuando se realiza la petición **GET** al endpoint **/videos**, se obtienen todos los videos junto con sus respectivos comentarios organizados en un array. Además, los comentarios se presentan en un orden jerárquico. Aunque existan comentarios que son respuestas de respuestas (hijos de hijos), el sistema solo muestra hasta dos niveles de jerarquía en los comentarios:
 
 ```json
 [
@@ -139,6 +135,32 @@ Como podemos notar los comentarios salen en orden de jerarquia.
             "children": []
           }
         ]
+      },
+      {
+        "id": 5,
+        "text": "¡Excelente video, gracias por compartir!",
+        "parentCommentId": null,
+        "username": "usuario123",
+        "videoId": 1,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Introducción a NestJS",
+    "description": "Este video explica cómo empezar con NestJS.",
+    "url": "https://ejemplo.com/video.mp4",
+    "userId": 2,
+    "username": "user2",
+    "comments": [
+      {
+        "id": 4,
+        "text": "¡Excelente video, gracias por compartir!",
+        "parentCommentId": null,
+        "username": "usuario123",
+        "videoId": 2,
+        "children": []
       }
     ]
   }
