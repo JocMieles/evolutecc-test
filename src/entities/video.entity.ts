@@ -9,11 +9,11 @@ export class Video {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty({ example: 'Introducción a NestJS', description: 'El título del video.' })
+  @ApiProperty({ example: 'Video para realizar comentarios', description: 'El título del video.' })
   @Column()
   title: string;
 
-  @ApiProperty({ example: 'Este video explica cómo empezar con NestJS.', description: 'Una breve descripción del video.' })
+  @ApiProperty({ example: 'Este video contiene comentarios', description: 'Una breve descripción del video.' })
   @Column()
   description: string;
 

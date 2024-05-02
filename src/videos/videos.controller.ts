@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, HttpStatus } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { CreateVideoDto } from '../dto/create-video.dto';
-import { UpdateVideoDto } from '../dto/update-video.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { Video } from '../entities/video.entity';
 import { VideoResponseDto } from 'src/dto/video-response.dto';

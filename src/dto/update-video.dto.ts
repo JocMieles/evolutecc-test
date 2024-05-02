@@ -3,7 +3,7 @@ import { IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class UpdateVideoDto {
     @ApiProperty({ 
-        example: 'Introducción avanzada a NestJS', 
+        example: 'Video para realizar comentarios', 
         description: 'Título actualizado del video. Es opcional para la actualización.', 
         required: false 
     })
@@ -12,7 +12,7 @@ export class UpdateVideoDto {
     title?: string;
 
     @ApiProperty({ 
-        example: 'Este video profundiza en características avanzadas de NestJS.', 
+        example: 'Este video tiene varios comentarios.', 
         description: 'Descripción actualizada del video. Es opcional para la actualización.', 
         required: false 
     })

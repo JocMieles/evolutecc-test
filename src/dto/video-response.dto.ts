@@ -12,7 +12,7 @@ export class VideoResponseDto {
   id: number;
 
   @ApiProperty({ 
-    example: 'Aventuras en NestJS', 
+    example: 'Aventuras para los comentarios', 
     description: 'El título del video. Provee una breve idea del tema o contenido del video.' 
   })
   @IsNotEmpty({ message: 'El título del video no puede estar vacío.' })
@@ -20,7 +20,7 @@ export class VideoResponseDto {
   title: string;
 
   @ApiProperty({ 
-    example: 'Este video explica conceptos básicos de NestJS para principiantes.', 
+    example: 'Este video explica conceptos básicos de comentarios.', 
     description: 'Una descripción breve del contenido del video. Ofrece una visión general de lo que el usuario puede esperar aprender o ver en el video.' 
   })
   @IsNotEmpty({ message: 'La descripción no puede estar vacía.' })

@@ -3,7 +3,7 @@ import { IsNotEmpty, IsNumber, IsString, IsUrl, Min } from 'class-validator';
 
 export class CreateVideoDto {
     @ApiProperty({ 
-        example: 'Introducción a NestJS', 
+        example: 'Video de pruebas', 
         description: 'Título del video. Debe ser una cadena no vacía.' 
     })
     @IsNotEmpty({ message: 'El título del video no puede estar vacío.' })
@@ -11,7 +11,7 @@ export class CreateVideoDto {
     title: string;
 
     @ApiProperty({ 
-        example: 'Este video explica cómo empezar con NestJS.', 
+        example: 'Este video explica cómo empezar con los comentarios.', 
         description: 'Una breve descripción del video. Debe ser informativa y clara.' 
     })
     @IsNotEmpty({ message: 'La descripción del video no puede estar vacía.' })
