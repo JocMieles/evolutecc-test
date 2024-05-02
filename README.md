@@ -174,4 +174,4 @@ En el **JSON** que se muestra a continuación, cuando se realiza la petición **
 
 ## Propuestas futuras
 
-Se sugiere como complemento a este desarrollo implementar un sistema de autenticación, microservicios para cada modulo o tabla con API Gateway, validaciones mas estrictas de inserción de datos, notificaciones y un contador de **likes** para los videos y los comentarios.
+Se sugiere como complemento a este desarrollo implementar un sistema de autenticación, microservicios para cada modulo o tabla con API Gateway, validaciones mas estrictas de inserción de datos y demás, notificaciones y un contador de **likes** para los videos y los comentarios.
