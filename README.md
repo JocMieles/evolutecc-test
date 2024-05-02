@@ -51,7 +51,7 @@ Si un video tiene los comentarios con los ids 1, 2 y 3, y el segundo video tiene
 Aqui estan explicados los endpoint, esquemas y las estructuras json que se deben usar para crear, actualizar, obtener y eliminar la información de la base de datos.
 
 
-Para eliminar videos debes eliminar los comentarios para respeta las **foreing key**, asi mismo con los usuarios, borrar los comentarios y los videos.
+Para eliminar videos se debe eliminar los comentarios para respetar las **foreing key**, asi mismo con los usuarios, borrar los comentarios y los videos.
 
 ## Estructura de la Base de Datos
 
