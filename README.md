@@ -1,6 +1,6 @@
 # Reto Evolutecc Comentarios
 
-Este proyecto es un backend para plataformas que permite crear usuarios, videos y comentar los videos, ademas de poder comentar los comentarios de otros usuarios y utiliza NestJS, TypeORM, PostgreSQL y Docker.
+Backend que permite crear usuarios, videos, comentarlos y ademas comentar los comentarios de otros usuarios. Este proyecto utiliza NestJS, TypeORM, PostgreSQL y Docker.
 
 ## Configuración Inicial
 
@@ -13,24 +13,26 @@ cd evolutecc-test
 
 ## Requisitos
 
-1. Lista los requisitos necesarios para ejecutar el proyecto, como Node.js, Docker, etc.
-
 - Node.js (v14 o superior)
 - Docker
 - Docker Compose
 
 ## Instalación y Ejecución
 
-Instrucciones paso a paso para instalar y ejecutar el proyecto utilizando Docker:
+- Instrucciones paso a paso para instalar y ejecutar el proyecto utilizando Docker:
 
-Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado public. 
-Para la creacion de las tablas en raiz del proyecto hay una carpeta llamada sql y en archivo dentro hay un script para crear las tablas manualmente y algunos datos de prueba.
+
 ```bash
 npm install
 
 docker-compose up --build
+
 ```
-Instrucciones paso a paso para instalar y ejecutar sin Docker:
+- Instrucciones paso a paso para instalar y ejecutar sin Docker:
+
+Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado public. 
+Para la creacion de las tablas en raiz del proyecto hay una carpeta llamada sql y en archivo dentro hay un script para crear las tablas manualmente y algunos datos de prueba.
+
 ```bash
 npm install
 
