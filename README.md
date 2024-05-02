@@ -45,10 +45,13 @@ Luego la **API** queda habilitada en **http://localhost:3000/**
 Swagger **http://localhost:3000/api**.
 
 Primero se debe crear un **usuario**, luego crear un video con un **id** de **usuario** y por ultimo se crean los **comentarios** asociando un **usuario** y un **video** con sus respectivos **Id**. Para comentar un comentario debe haber un comentario creado al cual comentar. Ademas recordar que los comentarios anidados estan validados para video y comentario con sus respectivos **IDs**.
-Ejemplo:
+**Ejemplo:**
 Si un video tiene los comentarios con los ids 1, 2 y 3, y el segundo video tiene los ids 4, y 5. No puedes hacer un comentario del comentario con id 4 relacionandolo al video 1.
 
 Aqui estan explicados los endpoint, esquemas y las estructuras json que se deben usar para crear, actualizar, obtener y eliminar la información de la base de datos.
+
+
+Para eliminar videos debes eliminar los comentarios para respeta las **foreing key**, asi mismo con los usuarios, borrar los comentarios y los videos.
 
 ## Estructura de la Base de Datos
 
@@ -175,3 +178,4 @@ En el **JSON** que se muestra a continuación, cuando se realiza la petición **
 ## Propuestas futuras
 
 Se sugiere como complemento a este desarrollo implementar un sistema de autenticación, microservicios para cada modulo o tabla con API Gateway, validaciones mas estrictas de inserción de datos y demás, notificaciones y un contador de **likes** para los videos y los comentarios.
+Que el eliminar videos quede por un campo al cual se puede llamar **deleted** que por defecto sea **0** y se actuliza a **1** al eliminar, lo cual permite tener permanencia de datos, pero se debe validar que al traer los datos de videos el **deleted** este en 0.
