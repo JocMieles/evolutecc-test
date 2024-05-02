@@ -1,12 +1,12 @@
 # Reto Evolutecc Comentarios
 
-Backend que permite crear usuarios, videos, comentarlos y ademas comentar los comentarios de otros usuarios. Este proyecto utiliza NestJS, TypeORM, PostgreSQL y Docker.
+Este proyecto desarrolla un backend utilizando NestJS, TypeORM, PostgreSQL y Docker para gestionar una plataforma de contenido multimedia. Los usuarios pueden registrarse, subir videos y comentar tanto en los videos como en los comentarios de otros usuarios, facilitando una interacción rica y multidimensional. Este Backend no solo permite la creación y gestión de usuarios y videos, sino que también soporta la creación de comentarios anidados. Esta solución está diseñada para ser escalable y eficiente, aprovechando las capacidades modernas de contenerización(Docker) y bases de datos relacionales.
 
 ## Configuración Inicial
 
 Instrucciones sobre cómo clonar y configurar el proyecto para ejecutarlo localmente:
 ```bash
-git clone **https://github.com/JocMieles/evolutecc-test.git**
+git clone https://github.com/JocMieles/evolutecc-test.git
 
 cd evolutecc-test
 ```
@@ -30,8 +30,8 @@ docker-compose up --build
 ```
 - Instrucciones paso a paso para instalar y ejecutar sin Docker:
 
-Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado public. 
-Para la creacion de las tablas en la raiz del proyecto hay una carpeta llamada sql, dentro de la carpeta hay un archivo **sql** en el cual encontraras un script para crear las tablas manualmente y algunos datos de prueba.
+Primero se debe crear la base de datos y las tablas. Para la base de datos estan dos opciones que puedes usar.
+Las cuales se encuentran en una carpeta en la raiz del proyecto llamada sql, dentro de la carpeta hay un archivo **sql** en el cual encontraras un script para la base de datos, el cual esta **comentado** y tambien para crear las tablas manualmente y algunos datos de prueba.
 
 ```bash
 npm install
@@ -43,6 +43,11 @@ Luego la **API** queda habilitada en **http://localhost:3000/**
 ## Documentacion API 
 
 Swagger **http://localhost:3000/api**.
+
+Primero se debe crear un **usuario**, luego crear un video con un **id** de **usuario** y por ultimo se crean los **comentarios** asociando un **usuario** y un **video** con sus respectivos **Id**. Para comentar un comentario debe haber un comentario creado al cual comentar. Ademas recordar que los comentarios anidados estan validados para video y comentario con sus respectivos **IDs**.
+Ejemplo:
+Si un video tiene los comentarios con los ids 1, 2 y 3, y el segundo video tiene los ids 4, y 5. No puedes hacer un comentario del comentario con id 4 relacionandolo al video 1.
+
 Aqui estan explicados los endpoint, esquemas y las estructuras json que se deben usar para crear, actualizar, obtener y eliminar la información de la base de datos.
 
 ## Estructura de la Base de Datos
@@ -166,3 +171,7 @@ En el **JSON** que se muestra a continuación, cuando se realiza la petición **
   }
 ]
 ```
+
+## Propuestas futuras
+
+Se sugiere como complemento a este desarrollo implementar un sistema de autenticación, microservicios para cada modulo o tabla con API Gateway, validaciones mas estrictas de inserción de datos, notificaciones y un contador de **likes** para los videos y los comentarios.

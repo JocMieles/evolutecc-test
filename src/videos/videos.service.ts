@@ -6,7 +6,6 @@ import { CreateVideoDto } from '../dto/create-video.dto';
 import { UpdateVideoDto } from '../dto/update-video.dto';
 import { User } from '../entities/user.entity';
 import { VideoResponseDto } from 'src/dto/video-response.dto';
-import { CommentDto } from 'src/dto/comment.dto';
 import { Comment } from 'src/entities/comment.entity';
 
 @Injectable()
