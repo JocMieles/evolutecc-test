@@ -13,11 +13,11 @@ export class Comment {
   @Column()
   text: string;
 
-  @ApiProperty({ example: 1, description: 'The user ID of the video uploader' })
+  @ApiProperty({ example: 1, description: 'ID del usuario que realizó el comentario.' })
   @Column()
   userId: number;
 
-  @ApiProperty({ example: "user123", description: 'The user ID of the video uploader' })
+  @ApiProperty({ example: "user123", description: 'Nombre de usuario del autor del comentario.' })
   @Column()
   username: string;
 

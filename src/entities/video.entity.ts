@@ -5,27 +5,27 @@ import { Comment } from './comment.entity';
 
 @Entity()
 export class Video {
-  @ApiProperty({ example: 1, description: 'The unique identifier of the video' })
+  @ApiProperty({ example: 1, description: 'El identificador único del video.' })
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty({ example: 'Introduction to NestJS', description: 'The title of the video' })
+  @ApiProperty({ example: 'Introducción a NestJS', description: 'El título del video.' })
   @Column()
   title: string;
 
-  @ApiProperty({ example: 'This video explains how to get started with NestJS.', description: 'A brief description of the video' })
+  @ApiProperty({ example: 'Este video explica cómo empezar con NestJS.', description: 'Una breve descripción del video.' })
   @Column()
   description: string;
 
-  @ApiProperty({ example: 'https://example.com/video.mp4', description: 'The URL of the video' })
+  @ApiProperty({ example: 'https://example.com/video.mp4', description: 'La URL del video.' })
   @Column()
   url: string;
 
-  @ApiProperty({ example: 1, description: 'The user ID of the video uploader' })
+  @ApiProperty({ example: 1, description: 'El ID del usuario que subió el video.' })
   @Column()
   userId: number;
 
-  @ApiProperty({ example: 'user123', description: 'The user ID of the video uploader' })
+  @ApiProperty({ example: 'user123', description: 'El nombre de usuario del creador del video.' })
   @Column()
   username: string;
 
@@ -34,6 +34,6 @@ export class Video {
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.video)
-  @ApiProperty({ description: 'Comentarios asociados al video. Permite acceder a todos los comentarios realizados en este video.' })
+  @ApiProperty({ description: 'Comentarios asociados al video. Esta relación permite acceder a todos los comentarios realizados sobre este video.' })
   comments: Comment[];
 }

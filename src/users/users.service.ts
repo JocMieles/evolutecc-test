@@ -48,8 +48,7 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException(`Usuario con ID ${id} no encontrado.`);
     }
-
-    // Verificar actualizaciones para email y username
+    
     if (updateUserDto.email && updateUserDto.email !== user.email) {
       const emailExists = await this.usersRepository.findOne({ where: { email: updateUserDto.email } });
       if (emailExists) {

@@ -8,8 +8,8 @@ import { Video } from './entities/video.entity';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Ejemplo de API')
-    .setDescription('La descripción de la API')
+    .setTitle('Api Comentarios para Videos')
+    .setDescription('Esta API es un CRUD para los usuarios, videos y comentarios de Evolutecc')
     .setVersion('1.0')
     .build();
     const document = SwaggerModule.createDocument(app, config, {

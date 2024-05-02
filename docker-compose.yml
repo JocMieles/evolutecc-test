@@ -1,15 +1,26 @@
 version: '3.7'
 
 services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGSQL_HOST: postgres
+      PGSQL_PORT: 5432
+      PGSQL_USERNAME: postgres
+      PGSQL_PASSWORD: postgres
+      PGSQL_DATABASE: postgres
 
   postgres:
     image: postgres:14
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 80s
     ports:
       - "5432:5432"
     environment:

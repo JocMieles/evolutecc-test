@@ -19,19 +19,16 @@ export class CommentsService {
     ) { }
 
     async create(createCommentDto: CreateCommentDto): Promise<any> {
-        // Verifica que el usuario exista
         const userExists = await this.userRepository.findOne({ where: { id: createCommentDto.userId } });
         if (!userExists) {
             throw new NotFoundException(`Usuario con ID ${createCommentDto.userId} no encontrado.`);
         }
 
-        // Verifica que el video exista
         const videoExists = await this.videoRepository.findOne({ where: { id: createCommentDto.videoId } });
         if (!videoExists) {
             throw new NotFoundException(`Video con ID ${createCommentDto.videoId} no encontrado.`);
         }
 
-        // Si hay un parentCommentId, verifica que el comentario padre exista
         if (createCommentDto.parentCommentId) {
             const parentCommentExists = await this.commentRepository.findOne({
                 where: { id: createCommentDto.parentCommentId },
@@ -41,13 +38,11 @@ export class CommentsService {
                 throw new NotFoundException(`Comentario padre con ID ${createCommentDto.parentCommentId} no encontrado.`);
             }
     
-            // Asegura que el comentario padre pertenezca al mismo video
             if (parentCommentExists.video.id !== createCommentDto.videoId) {
                 throw new NotFoundException(`El comentario padre con ID ${createCommentDto.parentCommentId} no pertenece al video con ID ${createCommentDto.videoId}.`);
             }
         }
 
-        // Crea y guarda el nuevo comentario
         const comment = this.commentRepository.create({
             ...createCommentDto,
             user: userExists,
@@ -111,7 +106,6 @@ export class CommentsService {
             throw new NotFoundException(`Comentario con ID ${id} no encontrado.`);
         }
 
-        // Actualiza sólo el texto del comentario
         comment.text = updateCommentDto.text || comment.text;
         return this.commentRepository.save(comment);
     }

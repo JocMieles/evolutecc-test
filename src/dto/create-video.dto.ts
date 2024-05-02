@@ -34,12 +34,4 @@ export class CreateVideoDto {
     @IsNumber({}, { message: 'El ID del usuario debe ser un número.' })
     @Min(1, { message: 'El ID del usuario debe ser un número positivo.' })
     userId: number;
-
-    // @ApiProperty({ 
-    //     example: 1, 
-    //     description: 'ID del usuario que sube el video. Debe ser un número entero y válido.' 
-    // })
-    // @IsNotEmpty({ message: 'El ID del usuario es obligatorio.' })
-    // @IsString({ message: 'La descripción debe ser una cadena de caracteres.' })
-    // username: string;
 }
