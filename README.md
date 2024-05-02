@@ -107,7 +107,7 @@ A continuación se presenta una tabla con los endpoints disponibles en la aplica
 
 ## Vista Comentarios por Video
 
-[Json Comments Videos](jsonComments.png)
+![Json Comments Videos](jsonComments.png)
 
 En el **JSON** que se muestra a continuación, cuando se realiza la petición **GET** al endpoint **/videos**, se obtienen todos los videos junto con sus respectivos comentarios organizados en un array. Además, los comentarios se presentan en un orden jerárquico. Aunque existan comentarios que son respuestas de respuestas (hijos de hijos), el sistema solo muestra hasta dos niveles de jerarquía en los comentarios:
 
