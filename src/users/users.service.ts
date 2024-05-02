@@ -13,6 +13,12 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    if(!createUserDto.email){
+      throw new BadRequestException('El correo electrónico no se envio.');
+    }
+    if(!createUserDto.username){
+      throw new BadRequestException('El username no se envio.');
+    }
     const existingEmail = await this.usersRepository.findOne({ where: { email: createUserDto.email } });
     const existingUsername = await this.usersRepository.findOne({ where: { username: createUserDto.username } });
 
@@ -40,6 +46,15 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+
+    if(updateUserDto.email == "" ){
+      throw new BadRequestException('El correo electrónico no puede ser vacio.');
+    }
+
+    if(updateUserDto.username == "" ){
+      throw new BadRequestException('El username no puede ser vacio.');
+    }
+
     const user = await this.usersRepository.preload({
       id: id,
       ...updateUserDto,
@@ -48,7 +63,7 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException(`Usuario con ID ${id} no encontrado.`);
     }
-    
+
     if (updateUserDto.email && updateUserDto.email !== user.email) {
       const emailExists = await this.usersRepository.findOne({ where: { email: updateUserDto.email } });
       if (emailExists) {
