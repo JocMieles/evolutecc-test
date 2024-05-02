@@ -24,8 +24,9 @@ docker-compose up --build
 Estructura de la Base de Datos
 Descripción de cómo se estructura la base de datos y qué representa cada tabla.
 
-Diagrama Entidad-Relación
-![Diagrama Entidad-Relación](Diagrama Entidad-Relacion.png)
+### Diagrama Entidad-Relación
+
+![Diagrama Entidad-Relación](Diagrama%20Entidad-Relacion.png)
 
 Descripción del Diagrama
 Descripción breve de cada tabla y sus relaciones:
