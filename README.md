@@ -2,12 +2,12 @@
 
 Este proyecto es un backend para plataformas que permite crear usuarios, videos y comentar los videos, ademas de poder comentar los comentarios de otros usuarios y utiliza NestJS, TypeORM, PostgreSQL y Docker.
 
-
 ## Configuración Inicial
 
 Instrucciones sobre cómo clonar y configurar el proyecto para ejecutarlo localmente:
 
 git clone https://github.com/JocMieles/evolutecc-test.git
+
 cd evolutecc-test
 
 ## Requisitos
@@ -26,11 +26,13 @@ Crea una base de datos en PostgreSQL llamada postgres y un schemas llamado publi
 Para la creacion de las tablas en raiz del proyecto hay una carpeta llamada sql y en archivo dentro hay un script para crear las tablas manualmente y algunos datos de prueba.
 
 npm install
+
 docker-compose up --build
 
 Instrucciones paso a paso para instalar y ejecutar sin Docker:
 
 npm install
+
 npm run start
 
 Luego queda habilitado en **http://localhost:3000/**
