@@ -6,7 +6,6 @@ Breve descripción del proyecto, incluyendo su propósito y utilidad. Este proye
 
 Instrucciones sobre cómo clonar y configurar el proyecto para ejecutarlo localmente:
 
-```bash
 git clone https://example.com/your-project.git
 cd your-project
 Requisitos
